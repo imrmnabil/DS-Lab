@@ -7,19 +7,11 @@ int lm,rm;
 
 void preorder (int);
 
-void pstorder(int);
-
 void inorder(int);
-
-int leftmost ();
 
 int main()
 {
     preorder(0);
-    cout<<endl;
-    lm = leftmost();
-    cout<<lm<<endl;
-    pstorder(lm);
     cout<<endl;
     inorder(0);
     cout<<endl;
@@ -36,17 +28,6 @@ void preorder (int ind)
         preorder(2*ind +2);
 }
 
-void pstorder(int ind)
-{
-    cout<<tree[ind];
-   
-    if(ind % 2 == 0)
-    {
-        return;
-    }
-    pstorder(2*((ind-1)/2) +2);
-    pstorder((ind-1)/2);
-}
 
 void inorder(int ind)
 {
@@ -56,32 +37,4 @@ void inorder(int ind)
     cout<<tree[ind];
     inorder(2*ind +2);
     }
-}
-
-int leftmost()
-{
-    int i = 0;
-    while(true)
-    {
-        if(tree[2*i+1] == '\0')
-        {
-            break;
-        }
-        i = 2*i + 1;
-    }
-    return i;
-}
-
-int rightmost()
-{
-    int i = 0;
-    while(true)
-    {
-        if(tree[2*i+2] == '\0')
-        {
-            break;
-        }
-        i = 2*i + 2;
-    }
-    return i;
 }
